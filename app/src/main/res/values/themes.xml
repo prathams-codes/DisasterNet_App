@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DisasterNet" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/accent_orange</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="android:textColor">@color/light_text</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+    </style>
+</resources>

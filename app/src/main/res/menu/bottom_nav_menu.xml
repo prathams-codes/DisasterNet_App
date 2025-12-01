@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_shoutbox"
+        android:icon="@drawable/ic_shoutbox"
+        android:title="@string/title_shoutbox" />
+
+    <item
+        android:id="@+id/navigation_nearby"
+        android:icon="@drawable/ic_nearby"
+        android:title="@string/title_nearby" />
+
+    <item
+        android:id="@+id/navigation_sos"
+        android:icon="@drawable/ic_sos"
+        android:title="@string/title_sos" />
+
+</menu>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DisasterNet</string>
+    <string name="title_shoutbox">Shoutbox</string>
+    <string name="title_nearby">Nearby</string>
+    <string name="title_sos">SOS</string>
+    <string name="header_nearby_users">Nearby Users</string>
+    <string name="shoutbox_hint">Type public message…</string>
+    <string name="send_button_text">SEND</string>
+
+    <string name="sos_button_text">SOS</string>
+    <string name="sos_instructions">Press and hold for 3 seconds to send alert</string>
+    <string name="gps_status_acquiring">GPS Status: Acquiring…</string>
+    <string name="gps_status_getting_location">GPS: Getting location…</string>
+    <string name="gps_status_sent">GPS Sent: %1$s, %2$s</string>
+    <string name="gps_status_failed">GPS: Failed to get location.</string>
+    <string name="gps_status_error">GPS: Error getting location.</string>
+    <string name="toast_sos_sent">SOS Broadcast Sent!</string>
+    <string name="toast_sos_not_sent">Could not get location. SOS not sent.</string>
+    <string name="toast_gps_error">Error getting location: %1$s</string>
+</resources>
