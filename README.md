@@ -1,198 +1,87 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-16LE" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DisasterNet – Offline Emergency Communication App</title>
+DisasterNet 🚨
+Offline Emergency Communication App
 
-  <style>
-    body {
-      margin: 0;
-      padding: 24px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.7;
-      background: #ffffff;
-      color: #1a1a1a;
-    }
-    .container { max-width: 900px; margin: auto; }
-    h1 { font-size: 34px; margin-bottom: 10px; }
-    h2 { margin-top: 32px; font-size: 26px; }
-    h3 { margin-top: 22px; font-size: 20px; }
+DisasterNet is an offline, peer-to-peer communication tool designed for emergency situations where cellular networks and internet connectivity are unavailable. Built for Android, it uses Bluetooth Low Energy (BLE) to create a local broadcast network that allows users to send public messages, discover nearby survivors, and broadcast critical SOS alerts with GPS coordinates.
 
-    pre {
-      background: #0b1220;
-      color: #e6eef8;
-      padding: 14px;
-      border-radius: 10px;
-      overflow-x: auto;
-    }
-    code {
-      background: #eef2ff;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
+📱 Features
+Public Shoutbox 📢
 
-    ul, ol {
-      margin-left: 20px;
-    }
+• Broadcast short text messages instantly to all nearby users
+• Custom byte-level chunking ensures reliable BLE communication
+• Clear visual separation between sent and received messages
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 14px;
-    }
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: center;
-    }
+SOS Emergency System 🆘
 
-    .section {
-      background: #f5f7fb;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-  </style>
-</head>
+• Press and hold the SOS button for 3 seconds to trigger an emergency alert
+• Automatically fetches device GPS coordinates
+• High-visibility red/yellow SOS messages for urgent recognition
+• Button color changes confirm transmission
 
-<body>
-<div class="container">
+Nearby Device Discovery 📡
 
-  <h1>DisasterNet 🚨</h1>
+• Continuously scans for DisasterNet users
+• Shows device name and Bluetooth address
+• UI ready for private chat (logic under development)
 
-  <p>
-    <strong>DisasterNet</strong> is an offline, peer-to-peer communication tool designed for emergency situations where cellular
-    networks and internet connectivity are unavailable. Built for Android, it uses <strong>Bluetooth Low Energy (BLE)</strong>
-    to create a local broadcast network, allowing users to send public messages, discover nearby survivors, and
-    broadcast critical SOS alerts with GPS coordinates.
-  </p>
+🛠️ Tech Stack
 
-  <div class="section">
-    <h2>📱 Features</h2>
+• Language: Kotlin
+• Minimum Android Version: Android 8.0 (API 26)
+• Architecture: MVVM
+• Connectivity: BLE Advertising and Scanning
+• Location Services: Google Play Services (FusedLocationProvider)
+• UI Components: Fragments, Navigation Component, RecyclerView, ConstraintLayout
 
-    <h3>📢 Public Shoutbox</h3>
-    <ul>
-      <li><strong>Broadcast Messages:</strong> Send short text messages instantly to all nearby users.</li>
-      <li><strong>Reliable Delivery:</strong> Custom byte-level chunking protocol ensures robust message transfer.</li>
-      <li><strong>Visual Feedback:</strong> Sent and received messages appear clearly differentiated.</li>
-    </ul>
+⚙️ How It Works (Networking Core)
 
-    <h3>🆘 SOS Emergency System</h3>
-    <ul>
-      <li><strong>One-Touch Alert:</strong> Long-press the SOS button for 3 seconds to broadcast an emergency.</li>
-      <li><strong>GPS Integration:</strong> Automatically acquires accurate device coordinates.</li>
-      <li><strong>High Visibility:</strong> SOS messages appear in red/yellow for immediate recognition.</li>
-      <li><strong>Visual Feedback:</strong> Button color changes confirm broadcast status.</li>
-    </ul>
+DisasterNet overcomes BLE’s 31-byte advertisement packet limitation using a custom fragmentation and reassembly system:
 
-    <h3>📡 Nearby Device Discovery</h3>
-    <ul>
-      <li><strong>Real-time Scanning:</strong> Continuously scans for nearby DisasterNet users.</li>
-      <li><strong>User List:</strong> Displays discovered devices with names and BLE addresses.</li>
-      <li><strong>Private Chat (In Progress):</strong> UI available; connection logic coming soon.</li>
-    </ul>
-  </div>
+Messages are divided into small 15-byte chunks
 
-  <div class="section">
-    <h2>🛠️ Tech Stack</h2>
-    <ul>
-      <li><strong>Language:</strong> Kotlin</li>
-      <li><strong>Minimum SDK:</strong> API 26 (Android 8.0)</li>
-      <li><strong>Architecture:</strong> MVVM</li>
-      <li><strong>Connectivity:</strong> BLE Advertising & Scanning</li>
-      <li><strong>Location Services:</strong> FusedLocationProvider</li>
-      <li><strong>UI Components:</strong> Fragments, Navigation, RecyclerView, ConstraintLayout</li>
-    </ul>
-  </div>
+Each chunk contains a 2-byte header with Message ID and chunk numbers
 
-  <div class="section">
-    <h2>⚙️ How It Works (Networking Core)</h2>
+Broadcasting uses a “Shout → Pause → Repeat” pattern to avoid BLE hardware overload
 
-    <p>
-      DisasterNet overcomes the BLE advertisement size limit (~31 bytes) using a custom
-      <strong>Fragmentation and Reassembly Protocol</strong>.
-    </p>
+Each device generates a unique UUID to prevent duplication and self-messages
 
-    <ol>
-      <li><strong>Message Chunking:</strong> Messages are split into safe 15-byte payloads.</li>
-      <li><strong>Custom Header:</strong> Each packet includes Message ID and chunk metadata.</li>
-      <li><strong>Queue-Based Broadcasting:</strong> Uses a “Shout, Pause, Repeat” cycle to prevent BLE hardware overload.</li>
-      <li><strong>Unique Identification:</strong> Generated UUID prevents message duplication and self-reception.</li>
-    </ol>
-  </div>
+🚀 Getting Started
+Prerequisites
 
-  <div class="section">
-    <h2>🚀 Getting Started</h2>
+• Two Android devices (Android 8.0 or higher)
+• Bluetooth and Location enabled
 
-    <h3>Prerequisites</h3>
-    <ul>
-      <li>Two Android devices (Android 8.0+).</li>
-      <li>Bluetooth and Location enabled.</li>
-    </ul>
+Installation
 
-    <h3>Installation</h3>
-    <pre><code>git clone https://github.com/prathams-codes/DisasterNet_App.git
-cd DisasterNet_App
-</code></pre>
+Clone the repository:
 
-    <ol>
-      <li>Open in Android Studio.</li>
-      <li>Sync Gradle files.</li>
-      <li>Connect your device.</li>
-      <li>Run the app (Shift + F10).</li>
-    </ol>
+git clone https://github.com/yourusername/DisasterNet.git
 
-    <h3>Permissions</h3>
-    <ul>
-      <li><code>BLUETOOTH_SCAN</code> & <code>BLUETOOTH_ADVERTISE</code></li>
-      <li><code>ACCESS_FINE_LOCATION</code></li>
-    </ul>
-  </div>
+Then open the project in Android Studio, sync Gradle, connect your device, and run the app.
 
-  <div class="section">
-    <h2>📸 Screenshots</h2>
+Required Permissions
 
-    <table>
-      <tr>
-        <th>Shoutbox</th>
-        <th>SOS Alert</th>
-        <th>Nearby Users</th>
-      </tr>
-      <tr>
-        <td>(Add screenshot)</td>
-        <td>(Add screenshot)</td>
-        <td>(Add screenshot)</td>
-      </tr>
-    </table>
-  </div>
+• BLUETOOTH_SCAN
+• BLUETOOTH_ADVERTISE
+• ACCESS_FINE_LOCATION
 
-  <div class="section">
-    <h2>🚧 Future Improvements</h2>
-    <ul>
-      <li>Mesh Networking: Re-broadcasting messages to extend communication range.</li>
-      <li>Private File Sharing: Wi-Fi Direct-based media transfer.</li>
-      <li>Background Service: Continuous scanning even when the screen is off.</li>
-    </ul>
-  </div>
+📸 Screenshots
 
-  <div class="section">
-    <h2>🤝 Contributing</h2>
-    <p>
-      Contributions are welcome. Please fork the repository and submit a pull request for new features or fixes.
-    </p>
-  </div>
+Shoutbox | SOS Alert | Nearby Users
+(Add screenshots here when available)
 
-  <div class="section">
-    <h2>📄 License</h2>
-    <p>
-      This project is licensed under the MIT License.  
-      See the <code>LICENSE</code> file for full details.
-    </p>
-  </div>
+🚧 Future Improvements
 
-</div>
-</body>
-</html>
+• Mesh networking for extended range
+• Wi-Fi Direct file sharing
+• Background scanning service
+• End-to-end private chat system
 
+🤝 Contributing
+
+Contributions are welcome.
+Please feel free to submit improvements, issues, or pull requests.
+
+📄 License
+
+DisasterNet is licensed under the MIT License.
+See the LICENSE file for details
