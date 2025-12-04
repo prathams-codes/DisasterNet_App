@@ -67,10 +67,6 @@ The app requires the following permissions to function:
 
 | Shoutbox | SOS Alert | Nearby Users |
 |:---:|:---:|:---:|
-| ## 📸 Screenshots
-
-| Shoutbox | SOS Alert | Nearby Users |
-|:---:|:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/55d39305-0736-42b2-8a30-d3ea0d636f00" width="250" /> | <img src="https://github.com/user-attachments/assets/ec5cb9c3-8e57-441f-a721-a63761ccb48c" width="250" /> | <img src="https://github.com/user-attachments/assets/7050f223-be8d-4ae6-b105-14e339f71a19" width="250" /> |
 
 
@@ -90,6 +86,7 @@ Contributions are welcome! Please fork this repository and submit a pull request
 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
