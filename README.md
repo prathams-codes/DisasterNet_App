@@ -78,12 +78,60 @@ The app requires the following permissions to function:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please fork this repository and submit a pull request for any features, bug fixes, or enhancements.
+**DisasterNet is more than just an app; it's a lifeline.** When the grid goes down, this code needs to stay up. We are actively looking for contributors who are passionate about offline-first engineering, graph algorithms, and Android stability.
+
+Whether you are a master of `BluetoothGatt` or a UI/UX wizard, there is a place for you here.
+
+### 🎯 Priority Focus Areas
+We have identified three critical zones where we need immediate help:
+
+#### **Zone 1: The Mesh Network (The "Holy Grail")** 🕸️
+* **The Challenge:** Currently, communication is point-to-point. We need to implement a **Store-and-Forward** mechanism where Device B receives a message from Device A and re-broadcasts it to Device C.
+* **Skills Needed:** Graph Algorithms (Flooding/Gossip protocols), TTL (Time-To-Live) management, UUID tracking.
+* **Goal:** Extend the range of the network indefinitely through a chain of survivors.
+
+#### **Zone 2: Robust Background Handling** 🛡️
+* **The Challenge:** Android aggressively kills background processes to save battery. We need a rock-solid implementation (likely using a Foreground Service with `ongoing` notification) to keep BLE scanning active even when the phone is in a pocket.
+* **Skills Needed:** Android Services, WorkManager, Battery Optimization handling.
+
+#### **Zone 3: Privacy & Encryption** 🔐
+* **The Challenge:** Currently, BLE payloads are raw text. We need to implement encryption for the "Private Chat" feature so that specialized hardware cannot snooze on private conversations.
+* **Skills Needed:** Cryptography, Byte-array manipulation.
+
+### 🛠️ How to Contribute
+
+1.  **Fork & Clone**
+    * Fork the repo and clone it to your local machine.
+    * *Note:* You will need **two physical Android devices** to test networking changes effectively; the Android Emulator does not support Bluetooth low-level features well.
+
+2.  **Create a Branch**
+    * Keep your branch names descriptive:
+        * `feature/mesh-relay-logic`
+        * `fix/crash-on-rotation`
+        * `ui/dark-mode-chat`
+
+3.  **Code & Test**
+    * If you are modifying the **Shoutbox Protocol**, ensure you respect the **15-byte payload limit** to prevent packet loss.
+    * Test your changes on actual hardware to verify BLE handshake stability.
+
+4.  **Submit a Pull Request (PR)**
+    * Push to your fork and submit a PR to the `main` branch.
+    * In your PR description, explain **how you tested** the feature (e.g., *"Tested on Pixel 6 and Samsung S20, successful message transfer"*).
+
+### 🐛 Found a Bug?
+If you find a crash or a "ghost message," please open an **Issue** with:
+1.  Your Device Model & Android Version.
+2.  Steps to reproduce.
+3.  Logcat output (if possible).
+
+Let's build a network that survives when nothing else does! 🚀
+
 
 ## 📄 License
 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
