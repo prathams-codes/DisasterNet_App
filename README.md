@@ -51,7 +51,7 @@ DisasterNet solves the limitations of standard BLE advertisement packets (~31 by
 ### Installation
 1.  Clone the repository:
     ```bash
-    git clone (https://github.com/yourusername/DisasterNet_App.git)
+    git clone https://github.com/prathams-codes/DisasterNet_App.git
     ```
 2.  Open the project in **Android Studio**.
 3.  Sync Gradle files.
@@ -131,6 +131,7 @@ Let's build a network that survives when nothing else does! 🚀
 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
 
